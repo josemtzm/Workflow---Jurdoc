@@ -1,0 +1,59 @@
+﻿@model IEnumerable<Jurdoc.Models.Escritura>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.IdEscritura)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NumeroEscritura)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Solicitante)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaEscritura)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Observaciones)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdEscritura)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NumeroEscritura)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Solicitante)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaEscritura)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Observaciones)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.IdEscritura }) |
+                @*@Html.ActionLink("Details", "Details", new { id = item.IdEscritura }) |*@
+                @Html.ActionLink("Delete", "Delete", new { id = item.IdEscritura })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
