@@ -10,12 +10,12 @@ using Elsa.Extensions;
 using Elsa.Results;
 using Elsa.Services;
 using Elsa.Services.Models;
-using Jurdoc.Interface;
-using Jurdoc.Models;
+using Jurdoc.Escrituras.Web.Interfaces;
+using Jurdoc.Escrituras.Web.Models;
 
-namespace Jurdoc.Activities
+namespace Jurdoc.Escrituras.Web.Activities
 {
-    [ActivityDefinition(Category = "Escrituras", Description = "Agregar Escritura", Icon = "fas fa-file", Outcomes = new[] { OutcomeNames.Done })]
+    [ActivityDefinition(Category = "Escrituras", Description = "Agregar Escritura", Icon = "fas fa-file-alt", Outcomes = new[] { OutcomeNames.Done })]
     public class AgregarEscritura : Activity
     {
         IEscrituraService EscrituraService;

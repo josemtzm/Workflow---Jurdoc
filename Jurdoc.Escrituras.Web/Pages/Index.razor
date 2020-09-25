@@ -1,0 +1,44 @@
+﻿@page "/"
+
+@using Elsa.Activities.Workflows.Extensions
+@using Elsa.Models
+@inject Elsa.Services.IWorkflowInvoker WorkflowInvoker
+
+<div class="form-signup">
+    <EditForm Model="@Escritura" OnValidSubmit="@HandleFormSubmission" hidden="@ShowConfirmation">
+
+        <h1 class="h3 mb-3 font-weight-normal">Please register</h1>
+
+        <DataAnnotationsValidator />
+        <ValidationSummary />
+
+        <InputNumber type="text" id="IdEscritura" @bind-Value="@Escritura.IdEscritura" placeholder="IdEscritura" class="form-control" />
+        <InputText type="text" id="NumeroEscritura" @bind-Value="@Escritura.NumeroEscritura" placeholder="NumeroEscritura" class="form-control" />
+        <InputText type="text" id="Solicitante" @bind-Value="@Escritura.Solicitante" placeholder="Solicitante" class="form-control" />
+        <InputDate type="date" id="FechaEscritura" @bind-Value="@Escritura.FechaEscritura" placeholder="FechaEscritura" class="form-control" />
+        <InputText type="text" id="Observaciones" @bind-Value="@Escritura.Observaciones" placeholder="Observaciones" class="form-control" />
+        <InputText type="email" id="Email" @bind-Value="@Escritura.Email" placeholder="Email" class="form-control" />
+
+        <button type="submit" class="btn btn-lg btn-primary btn-block">Submit</button>
+    </EditForm>
+
+    <div hidden="@(!ShowConfirmation)">
+        Thanks for signing up! Please check your email.
+    </div>
+</div>
+
+@code {
+
+    private Jurdoc.Escrituras.Web.Models.Escritura Escritura { get; set; } = new Jurdoc.Escrituras.Web.Models.Escritura();
+    private bool ShowConfirmation { get; set; } = false;
+
+    private async Task HandleFormSubmission()
+    {
+        var input = new Variables();
+        input.SetVariable("Escritura", Escritura);
+
+        await WorkflowInvoker.TriggerSignalAsync("AgregarEscritura", input);
+        ShowConfirmation = true;
+    }
+
+}

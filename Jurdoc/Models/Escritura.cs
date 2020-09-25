@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Jurdoc.Models
+namespace Jurdoc.Api.Models
 {
     public class Escritura
     {

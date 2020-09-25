@@ -1,10 +1,10 @@
-﻿using Jurdoc.Models;
+﻿using Jurdoc.Api.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Jurdoc.Interface
+namespace Jurdoc.Api.Interface
 {
     public interface IDocumentoEscrituraService
     {

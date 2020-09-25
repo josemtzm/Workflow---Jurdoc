@@ -1,5 +1,5 @@
-﻿using Jurdoc.Interface;
-using Jurdoc.Models;
+﻿using Jurdoc.Api.Interface;
+using Jurdoc.Api.Models;
 using Microsoft.Extensions.Configuration;
 using Oracle.ManagedDataAccess.Client;
 using System;
@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Jurdoc.Services
+namespace Jurdoc.Api.Services
 {
     public class DocumentoEscrituraService : IDocumentoEscrituraService
     {

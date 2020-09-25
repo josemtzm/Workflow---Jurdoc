@@ -1,6 +1,6 @@
 using System;
 
-namespace Jurdoc.Models
+namespace Jurdoc.Api.Models
 {
     public class ErrorViewModel
     {

@@ -2,13 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Elsa.Activities.Email.Extensions;
-using Elsa.Activities.Http.Extensions;
-using Elsa.Activities.Timers.Extensions;
-using Elsa.Dashboard.Extensions;
-using Jurdoc.Extensions;
-using Jurdoc.Interface;
-using Jurdoc.Services;
+using Jurdoc.Api.Interface;
+using Jurdoc.Api.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -17,11 +12,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Oracle.ManagedDataAccess.Client;
-using Elsa.Persistence.EntityFrameworkCore.DbContexts;
-using Elsa.Persistence.EntityFrameworkCore.Extensions;
 using Microsoft.EntityFrameworkCore;
 
-namespace Jurdoc
+namespace Jurdoc.Api
 {
     public class Startup
     {
@@ -39,19 +32,6 @@ namespace Jurdoc
             services.AddTransient<IEscrituraService, EscrituraService>();
             services.AddSingleton<IConfiguration>(Configuration);
 
-            services
-            // Add Elsa services. 
-                .AddElsa(elsa => elsa.AddEntityFrameworkStores<SqliteContext>(ef => ef.UseSqlite(Configuration.GetConnectionString("Sqlite"))))
-            
-                // Add the activities we want to use.
-                .AddEmailActivities(options => options.Bind(Configuration.GetSection("Elsa:Smtp")))
-                .AddHttpActivities(options => options.Bind(Configuration.GetSection("Elsa:Http")))
-                .AddTimerActivities(options => options.Bind(Configuration.GetSection("Elsa:Timers")))
-                .AddEscriturasActivities()
-                // Add Elsa Dashboard services.
-                .AddElsaDashboard()
-                ;
-            
             services.AddMvc();
 
             //services.AddRazorPagesOptions(options => {
@@ -74,8 +54,6 @@ namespace Jurdoc
             }
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-            app.UseHttpActivities();
-
 
             app.UseRouting();
 
@@ -89,90 +67,6 @@ namespace Jurdoc
             });
 
             app.UseWelcomePage();
-
-            //app.Run(async (context) =>
-            //{
-            //    //Demo: Basic ODP.NET Core application for ASP.NET Core
-            //    // to connect, query, and return results to a web page
-
-            //    //Create a connection to Oracle			
-            //    string conString = "User Id=GESJURCON;Password=GESJURCONxxib;" +
-
-            //    //How to connect to an Oracle DB without SQL*Net configuration file
-            //    //  also known as tnsnames.ora.
-            //    "Data Source=orclpdb";
-
-            //    //How to connect to an Oracle DB with a DB alias.
-            //    //Uncomment below and comment above.
-            //    //"Data Source=<service name alias>;";
-
-            //    using (OracleConnection con = new OracleConnection(conString))
-            //    {
-            //        using (OracleCommand cmd = con.CreateCommand())
-            //        {
-            //            try
-            //            {
-            //                // This sample demonstrates how to use ODP.NET Core Configuration API
-
-            //                // Add connect descriptors and net service names entries.
-            //                OracleConfiguration.OracleDataSources.Add("orclpdb", "(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=localhost>)(PORT=1521))(CONNECT_DATA=(SERVICE_NAME=xe)(SERVER=dedicated)))");
-            //                OracleConfiguration.OracleDataSources.Add("orcl", "(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=<hostname or IP>)(PORT=1521))(CONNECT_DATA=(SERVICE_NAME=<service name>)(SERVER=dedicated)))");
-
-            //                // Set default statement cache size to be used by all connections.
-            //                OracleConfiguration.StatementCacheSize = 25;
-
-            //                // Disable self tuning by default.
-            //                OracleConfiguration.SelfTuning = false;
-
-            //                // Bind all parameters by name.
-            //                OracleConfiguration.BindByName = true;
-
-            //                // Set default timeout to 60 seconds.
-            //                OracleConfiguration.CommandTimeout = 60;
-
-            //                // Set default fetch size as 1 MB.
-            //                OracleConfiguration.FetchSize = 1024 * 1024;
-
-            //                // Set tracing options
-            //                OracleConfiguration.TraceOption = 1;
-            //                OracleConfiguration.TraceFileLocation = @"C:\traces";
-            //                // Uncomment below to generate trace files
-            //                //OracleConfiguration.TraceLevel = 7;
-
-            //                // Set network properties
-            //                OracleConfiguration.SendBufferSize = 8192;
-            //                OracleConfiguration.ReceiveBufferSize = 8192;
-            //                OracleConfiguration.DisableOOB = true;
-
-            //                con.Open();
-            //                cmd.BindByName = true;
-
-            //                //Use the command to display employee names from 
-            //                // the EMPLOYEES table
-            //                cmd.CommandText = "select NumeroEscritura from JDOC_TR_ESCRITURA where ID_ESCRITURA = :id";
-
-            //                // Assign id to the department number 50 
-            //                OracleParameter id = new OracleParameter("id", 50);
-            //                cmd.Parameters.Add(id);
-
-            //                //Execute the command and use DataReader to display the data
-            //                OracleDataReader reader = cmd.ExecuteReader();
-            //                while (reader.Read())
-            //                {
-            //                    await context.Response.WriteAsync("Numero de Escritura: " + reader.GetString(0) + "\n");
-            //                }
-
-            //                reader.Dispose();
-            //            }
-            //            catch (Exception ex)
-            //            {
-            //                await context.Response.WriteAsync(ex.Message);
-            //            }
-            //        }
-            //    }
-
-            //});
-
         }
     }
 }

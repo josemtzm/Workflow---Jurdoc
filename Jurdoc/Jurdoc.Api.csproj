@@ -5,9 +5,21 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Elsa" Version="1.2.2.29" />
-    <PackageReference Include="Elsa.Dashboard" Version="1.2.2.29" />
-    <PackageReference Include="Elsa.Persistence.EntityFrameworkCore" Version="1.2.2.29" />
+    <Compile Remove="Activities\**" />
+    <Compile Remove="DbContext\**" />
+    <Compile Remove="Extensions\**" />
+    <Content Remove="Activities\**" />
+    <Content Remove="DbContext\**" />
+    <Content Remove="Extensions\**" />
+    <EmbeddedResource Remove="Activities\**" />
+    <EmbeddedResource Remove="DbContext\**" />
+    <EmbeddedResource Remove="Extensions\**" />
+    <None Remove="Activities\**" />
+    <None Remove="DbContext\**" />
+    <None Remove="Extensions\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="3.1.8" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.8">
       <PrivateAssets>all</PrivateAssets>

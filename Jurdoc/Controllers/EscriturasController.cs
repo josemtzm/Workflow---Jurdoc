@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Jurdoc.Interface;
-using Jurdoc.Models;
+using Jurdoc.Api.Interface;
+using Jurdoc.Api.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Jurdoc.Controllers
+namespace Jurdoc.Api.Controllers
 {
     public class EscriturasController : Controller
     {
@@ -42,15 +42,10 @@ namespace Jurdoc.Controllers
             EscrituraService.EditEscritura(Escritura);
             return RedirectToAction(nameof(Index));
         }
-        public ActionResult Delete(int id)
+        [HttpDelete]
+        public ActionResult Delete(int Id)
         {
-            Escritura Escritura = EscrituraService.GetEscritura(id);
-            return View(Escritura);
-        }
-        [HttpPost]
-        public ActionResult Delete(Escritura Escritura)
-        {
-            EscrituraService.DeleteEscritura(Escritura);
+            EscrituraService.DeleteEscritura(Id);
             return RedirectToAction(nameof(Index));
         }
     }

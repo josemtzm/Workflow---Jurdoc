@@ -5,9 +5,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using Jurdoc.Models;
+using Jurdoc.Api.Models;
 
-namespace Jurdoc.Controllers
+namespace Jurdoc.Api.Controllers
 {
     public class HomeController : Controller
     {

@@ -1,5 +1,5 @@
-﻿using Jurdoc.Interface;
-using Jurdoc.Models;
+﻿using Jurdoc.Api.Interface;
+using Jurdoc.Api.Models;
 using Microsoft.Extensions.Configuration;
 using Oracle.ManagedDataAccess.Client;
 using System;
@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Jurdoc.Services
+namespace Jurdoc.Api.Services
 {
     public class EscrituraService : IEscrituraService
     {
@@ -137,7 +137,7 @@ namespace Jurdoc.Services
                 throw;
             }
         }
-        public void DeleteEscritura(Escritura Escritura)
+        public void DeleteEscritura(int IdEscritura)
         {
             try
             {
@@ -147,7 +147,7 @@ namespace Jurdoc.Services
                     {
                         con.Open();
                         cmd.Connection = con;
-                        cmd.CommandText = "Delete from Escritura where IdEscritura=" + Escritura.IdEscritura + "";
+                        cmd.CommandText = "Delete from Escritura where IdEscritura=" + IdEscritura + "";
                         cmd.ExecuteNonQuery();
                         con.Close();
                     }
