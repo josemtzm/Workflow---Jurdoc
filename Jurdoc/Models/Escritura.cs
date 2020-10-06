@@ -8,32 +8,32 @@ namespace Jurdoc.Api.Models
 {
     public class Escritura
     {
-        public int IdEscritura { get; set; }
+        public int IDESCRITURA { get; set; }
         [Required(ErrorMessage = "El campo \"Numero de Escritura\" es requerido, solo acepta números enteros y debe ser único.")]
         [Display(Name = "Número de Escritura:")]
-        public string NumeroEscritura { get; set; }
+        public string NUMEROESCRITURA { get; set; }
 
         [Display(Name = "Quien Solicita:")]
-        public string Solicitante { get; set; }
+        public string SOLICITANTE { get; set; }
 
-        [Display(Name = "Fecha de Escritura:")]
-        public DateTime FechaEscritura { get; set; }
+        //[Display(Name = "Fecha de Escritura:")]
+        //public DateTime FechaEscritura { get; set; }
 
-        [Required(ErrorMessage = "El campo \"Observaciones\" es requerido favor de especificar.")]
-        [StringLength(300, ErrorMessage = "El largo máximo es de 300 caracteres.")]
-        [Display(Name = "Descripción de la Escritura:")]
-        public string Observaciones { get; set; }
+        //[Required(ErrorMessage = "El campo \"Observaciones\" es requerido favor de especificar.")]
+        //[StringLength(300, ErrorMessage = "El largo máximo es de 300 caracteres.")]
+        //[Display(Name = "Descripción de la Escritura:")]
+        //public string Observaciones { get; set; }
 
-        public int Id_Tipo_Documento { get; set; }
+        //public int Id_Tipo_Documento { get; set; }
 
-        public int Id_Estatus { get; set; }
+        //public int Id_Estatus { get; set; }
 
-        public string Email { get; set; }
+        //public string Email { get; set; }
 
-        public string Accion { get; set; }
+        //public string Accion { get; set; }
 
-        public string prevAccion { get; set; }
+        //public string prevAccion { get; set; }
 
-        public string prevControlador { get; set; }
+        //public string prevControlador { get; set; }
     }
 }

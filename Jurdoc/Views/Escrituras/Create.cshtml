@@ -13,21 +13,21 @@
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="IdEscritura" class="control-label"></label>
-                <input asp-for="IdEscritura" class="form-control" />
-                <span asp-validation-for="IdEscritura" class="text-danger"></span>
+                <label asp-for="IDESCRITURA" class="control-label"></label>
+                <input asp-for="IDESCRITURA" class="form-control" />
+                <span asp-validation-for="IDESCRITURA" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="NumeroEscritura" class="control-label"></label>
-                <input asp-for="NumeroEscritura" class="form-control" />
-                <span asp-validation-for="NumeroEscritura" class="text-danger"></span>
+                <label asp-for="NUMEROESCRITURA" class="control-label"></label>
+                <input asp-for="NUMEROESCRITURA" class="form-control" />
+                <span asp-validation-for="NUMEROESCRITURA" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Solicitante" class="control-label"></label>
-                <input asp-for="Solicitante" class="form-control" />
-                <span asp-validation-for="Solicitante" class="text-danger"></span>
+                <label asp-for="SOLICITANTE" class="control-label"></label>
+                <input asp-for="SOLICITANTE" class="form-control" />
+                <span asp-validation-for="SOLICITANTE" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            @*<div class="form-group">
                 <label asp-for="Email" class="control-label"></label>
                 <input asp-for="Email" class="form-control" />
                 <span asp-validation-for="Email" class="text-danger"></span>
@@ -41,7 +41,7 @@
                 <label asp-for="Observaciones" class="control-label"></label>
                 <input asp-for="Observaciones" class="form-control" />
                 <span asp-validation-for="Observaciones" class="text-danger"></span>
-            </div>
+            </div>*@
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>

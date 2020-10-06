@@ -23,7 +23,7 @@ namespace Jurdoc.Api.Controllers.api
         [HttpGet]
         public IEnumerable<Escritura> Get()
         {
-            return EscrituraService.GetEscrituras();
+            return EscrituraService.ReadData<Escritura>();
         }
 
         // GET api/<EscriturasController>/5

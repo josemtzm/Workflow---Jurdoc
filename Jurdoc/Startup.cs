@@ -13,6 +13,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Oracle.ManagedDataAccess.Client;
 using Microsoft.EntityFrameworkCore;
+using AutoMapper;
+using Jurdoc.Api.Models;
+using AutoMapper.Data;
 
 namespace Jurdoc.Api
 {
@@ -33,6 +36,19 @@ namespace Jurdoc.Api
             services.AddSingleton<IConfiguration>(Configuration);
 
             services.AddMvc();
+
+            //var mapper = new Mapper(cfg => {
+            //    cfg.AddDataReaderMapping();
+            //    cfg.CreateMap<OracleDataReader, Escritura>;
+            //});
+
+
+            //services.AddAutoMapper(typeof(Startup));
+
+            services.AddAutoMapper(cfg =>
+            {
+                cfg.AddDataReaderMapping();
+            });
 
             //services.AddRazorPagesOptions(options => {
             //    options.Conventions.AddPageRoute("/Escritura/Index", "");

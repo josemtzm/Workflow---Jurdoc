@@ -9,10 +9,14 @@ namespace Jurdoc.Api.Interface
     public interface IEscrituraService
     {
         IEnumerable<Escritura> GetEscrituras();
+
+        List<Escritura> ReadData<T>();
+        
         Escritura GetEscritura(int ID_ESCRITURA);
         void AddEscritura(Escritura escritura);
         void EditEscritura(Escritura escritura);
         void DeleteEscritura(int ID_ESCRITURA);
+
         //void AprobarEscritura(int ID_ESCRITURA);
         //void RechazarEscritura(int ID_ESCRITURA, string Observaciones);
     }
