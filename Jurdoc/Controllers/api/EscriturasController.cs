@@ -19,6 +19,7 @@ namespace Jurdoc.Api.Controllers.api
         {
             EscrituraService = _EscrituraService;
         }
+
         // GET: api/<EscriturasController>
         [HttpGet]
         public IEnumerable<Escritura> Get()

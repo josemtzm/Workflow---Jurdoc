@@ -48,7 +48,9 @@ namespace Jurdoc.Api
             services.AddAutoMapper(cfg =>
             {
                 cfg.AddDataReaderMapping();
+                cfg.AddProfile(new AutoMapperConfig());
             });
+
 
             //services.AddRazorPagesOptions(options => {
             //    options.Conventions.AddPageRoute("/Escritura/Index", "");

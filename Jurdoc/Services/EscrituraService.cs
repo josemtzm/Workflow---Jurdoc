@@ -185,9 +185,20 @@ namespace Jurdoc.Api.Services
                         //rdr.Read();
                         //var map1 = _mapper.Map<OracleDataReader, Escritura>(rdr);
                         var map = _mapper.Map<OracleDataReader, List<T>>(rdr);
+                        //var map3 = _mapper.Map<OracleDataReader>(rdr);
                         //return lista;
+                        //var map2 = rdr.automap
 
                     }
+
+                    //int count = rdr.FieldCount;
+                    //while (rdr.Read())
+                    //{
+                    //    for (int i = 0; i < count; i++)
+                    //    {
+                    //        var map1 = _mapper.Map<OracleDataReader, Escritura>(rdr.GetOracleValue(i));
+                    //    }
+                    //}
                     con.Close();
 
                 }

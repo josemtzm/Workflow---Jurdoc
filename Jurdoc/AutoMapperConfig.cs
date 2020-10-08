@@ -3,6 +3,7 @@ using Jurdoc.Api.Models;
 using Oracle.ManagedDataAccess.Client;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -23,6 +24,7 @@ namespace Jurdoc.Api
     {
         public AutoMapperConfig()
         {
+            //this.CreateMap<IDataRecord, Escritura>();
             CreateMap<OracleDataReader, Escritura>()
                 .ForMember(x => x.IDESCRITURA, opt => opt.MapFrom(s => s["IDESCRITURA"]))
                 .ForMember(x => x.NUMEROESCRITURA, opt => opt.MapFrom(s => s["NUMEROESCRITURA"]))
@@ -31,7 +33,7 @@ namespace Jurdoc.Api
 
             CreateMap<Escritura, OracleDataReader>();
 
-            CreateMap<OracleDataReader, List<Escritura>>();
+            //CreateMap<OracleDataReader, List<Escritura>>();
 
             
 

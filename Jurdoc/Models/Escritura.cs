@@ -9,6 +9,7 @@ namespace Jurdoc.Api.Models
     public class Escritura
     {
         public int IDESCRITURA { get; set; }
+        
         [Required(ErrorMessage = "El campo \"Numero de Escritura\" es requerido, solo acepta números enteros y debe ser único.")]
         [Display(Name = "Número de Escritura:")]
         public string NUMEROESCRITURA { get; set; }
